@@ -1,5 +1,4 @@
 package com.carlos.youtubeblack.activity;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-
 import com.carlos.youtubeblack.R;
 import com.carlos.youtubeblack.adapter.AdapterVideo;
 import com.carlos.youtubeblack.api.YoutubeService;
@@ -30,6 +28,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+/*
+ -----------CARLOS ADRIANO-------------
+*/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,23 +51,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Inicializar componentes
-        recyclerVideos = findViewById(R.id.recyclerVideos);
-        searchView = findViewById(R.id.searchView);
+        initViews();
 
-        //Configurações iniciais
+        // TODO - Configurações iniciais
         retrofit = RetrofitConfig.getRetrofit();
 
 
-        //Configura toolbar
+        // TODO - Configurando a toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Youtube Black");
+        toolbar.setTitle("YOUTUBE BLACK");
         setSupportActionBar( toolbar );
 
-        //Recupera vídeos
+        // TODO - Recupera vídeos
         recuperarVideos("");
 
-        //Configura métodos para SearchView
+        // TODO - Configura métodos para SearchView
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -90,6 +90,17 @@ public class MainActivity extends AppCompatActivity {
                 recuperarVideos("");
             }
         });
+
+    }
+
+
+    // TODO - Inicializar componentes
+
+    private void initViews(){
+
+        recyclerVideos = findViewById(R.id.recyclerVideos);
+        searchView = findViewById(R.id.searchView);
+
 
     }
 
@@ -126,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerVideos.setLayoutManager(new LinearLayoutManager(this));
         recyclerVideos.setAdapter( adapterVideo );
 
-        //Configura evento de clique
+        // TODO - Configura evento de clique
         recyclerVideos.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         this,
